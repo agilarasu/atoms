@@ -14,7 +14,9 @@ export default function Page() {
                 <div className="flex flex-col w-full max-w-xl py-24 mx-auto stretch  overflow-y-auto">
                     <div className="space-y-8 mb-4">
                         {messages.map(message => (
+                            <>
                             <Card className="my-4">
+                                
                                 <CardHeader>
                                     <CardTitle>{message.role === 'user' ? 'You' : 'Assistant'} </CardTitle>
                                 </CardHeader>
@@ -22,6 +24,7 @@ export default function Page() {
                                     <MDXRenderer id={message.id} content={message.content} />
                                 </CardContent>
                             </Card>
+                            </>
 
                         ))}
                     </div>
