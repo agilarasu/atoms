@@ -9,7 +9,7 @@ export async function POST(req: Request) {
 
   const result = streamText({
     model: google('gemini-1.5-pro-latest'),
-    system: 'You are a helpful assistant.',
+    system: 'You are a helpful assistant. You should respond with the given components. You should atleast use this component once in a message : <Card name="a name here"> </Card>',
     messages,
   });
 
