@@ -10,7 +10,7 @@ import { CustomHeading, CustomParagraph } from './mdx-components/md';
 import { Card } from './mdx-components/Card';
 import { Quiz } from './mdx-components/Quiz';
 
-// End of custom interactive chat components
+// Include all custom components in this object
 
 const components = {
     h1: CustomHeading,
