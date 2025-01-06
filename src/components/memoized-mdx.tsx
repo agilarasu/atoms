@@ -2,7 +2,7 @@
 
 import { MDXRemote, type MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
-import React, { useState, useEffect, useRef, useMemo, memo } from 'react';
+import React, { useState, useEffect, useRef, memo } from 'react';
 
 // Import all custom interactive chat components
 
@@ -27,7 +27,7 @@ class MDXErrorBoundary extends React.Component<{ fallback: React.ReactNode, chil
         this.state = { hasError: false };
     }
 
-    static getDerivedStateFromError(_error: Error) {
+    static getDerivedStateFromError() {
         return { hasError: true };
     }
 
@@ -69,7 +69,6 @@ const MDXRenderer = memo(({ content }: { content: string }) => {
         const prepareMDX = async () => {
             try {
                 const mdxSource = await serialize(content, {
-                    components: components,
                 });
                 setMdxSource(mdxSource);
             } catch (error) {
