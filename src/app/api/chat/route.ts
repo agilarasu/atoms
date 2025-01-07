@@ -4,7 +4,7 @@ import { streamText } from 'ai';
 // Allow streaming responses up to 30 seconds
 export const maxDuration = 30;
 
-let system = `
+const system = `
 You are a helpful learning assistant.
 The user is interested in learning about the topic he or she is asking about. 
 You can provide the user with learning materials, quizzes, and answer their questions to help them learn.
