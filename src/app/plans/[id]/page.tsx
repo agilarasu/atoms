@@ -7,7 +7,7 @@ import { useParams } from 'next/navigation';
 interface Module {
     name: string;
     lessons: string;
-    moduleId: string;
+    _id: string;
 }
 
 interface Plan {
@@ -62,7 +62,7 @@ const PlanDetailsPage = () => {
                 </ul>
               <h4 className='text-md font-semibold mt-2 mb-1'>Modules</h4>
               {plan.modules.map((module) => (
-                  <div key={module.moduleId}>
+                  <div key={module._id} className='bg-gray-100 p-2 rounded-md mt-2'>
                       <p className='text-gray-700'>
                             <span className='font-semibold'>Module Name : </span> {module.name}
                       </p>
