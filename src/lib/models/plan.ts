@@ -12,7 +12,7 @@ interface IPlan extends Document {
   courseOutcomes: string[];
   modules: {
     name: string;
-    lessons: string;
+    lessons: string[];
   }[];
   createdAt: Date;
 }
@@ -32,7 +32,7 @@ const PlanSchema: Schema = new Schema(
       type: [
         {
           name: { type: String, default: "Module 1" },
-          lessons: { type: String, default: "Lesson 1" },
+          lessons: { type: [String], default: ["Lesson 1", "Lesson 2"] },
         },
       ],
       default: [],

@@ -6,7 +6,7 @@ import { useParams } from 'next/navigation';
 
 interface Module {
     name: string;
-    lessons: string;
+    lessons: string[];
     _id: string;
 }
 
@@ -66,9 +66,11 @@ const PlanDetailsPage = () => {
                       <p className='text-gray-700'>
                             <span className='font-semibold'>Module Name : </span> {module.name}
                       </p>
-                      <p className='text-gray-700'>
-                          <span className='font-semibold'>Lessons : </span> {module.lessons}
-                      </p>
+                        <ul className='list-disc'>
+                            {module.lessons.map((lesson,index) => (
+                                <li key={index}>{lesson}</li>
+                            ))}
+                        </ul>
                   </div>
               ))}
               <p className="text-gray-500 mt-2">
