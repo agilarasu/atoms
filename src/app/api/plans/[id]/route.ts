@@ -6,10 +6,9 @@ interface Params {
   id: string;
 }
 
-export async function GET(req: NextRequest, { params }: { params: Params }) {
-    // Next.js wants me to add await to params, 
-    // It feels like it's not necessary, but I'll do it anyway
-    const { id } = await params;
+export async function GET(req: NextRequest) {
+  // get the id from the request parameters, fix this later
+  const id = req.nextUrl.pathname.split('/').pop();
 
   try {
       await dbConnect();

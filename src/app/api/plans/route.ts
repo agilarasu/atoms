@@ -43,7 +43,6 @@ export async function POST(req: NextRequest) {
       prompt: `What to learn: ${whatToLearn}\nWhy to learn: ${whyToLearn}\nContent preferences: ${contentPreferences}`,
     }); 
 
-    console.log('Generated course:', generatedCourse.object);
     // Create a new Plan document with user inputs and placeholder for the rest
     const plan = new Plan({
       whatToLearn,
