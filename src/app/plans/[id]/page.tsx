@@ -6,6 +6,7 @@ import { useParams } from 'next/navigation';
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Clock, Share2, Copy, ChevronRight } from 'lucide-react';
+import { useSession } from 'next-auth/react';
 
 interface Module {
     name: string;
@@ -44,6 +45,17 @@ const PlanDetailsPage = () => {
     
         fetchPlan();
     }, [params.id]);
+
+      const { data: session, status } = useSession();
+      if (status === 'loading') return null;
+      if (!session) {
+        return (
+          <div className="min-h-screen flex items-center justify-center">
+            <p className="text-gray-600">You need to sign in to view this page.</p>
+          </div>
+        );
+      }
+    
 
     if (error) {
         return <div className='container mx-auto px-4 py-8'><p className="text-red-500 mb-4">{error}</p></div>
