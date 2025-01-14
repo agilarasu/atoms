@@ -1,19 +1,16 @@
 import type { Metadata } from 'next'
- 
-// These styles apply to every route in the application
 import './globals.css'
 import { Inter } from 'next/font/google'
-// If loading a variable font, you don't need to specify the font weight
-const inter = Inter({ subsets: ['latin'] })
- 
-// NextSessionProvider is a custom provider that wraps the NextAuth session provider
 import NextSessionProvider from '@/components/NextSessionProvider'
+import { Header } from '@/components/Header'
+
+const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Atom',
   description: 'Learn',
 }
- 
+
 export default function RootLayout({
   children,
 }: {
@@ -21,11 +18,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className={inter.className}>
         <NextSessionProvider>
-          {children}
+          <Header />
+          <main>{children}</main>
         </NextSessionProvider>
       </body>
     </html>
   )
 }
+
