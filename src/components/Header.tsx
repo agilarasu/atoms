@@ -25,7 +25,7 @@ export function Header() {
           Atoms.
         </Link>
         <div>
-          {status === 'authenticated' && session?.user ? (
+          {status === 'authenticated' && session?.user && (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="relative h-8 w-8 rounded-full">
@@ -44,7 +44,8 @@ export function Header() {
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
-          ) : (
+          )}
+          {status === 'unauthenticated' && (
             <Button asChild>
               <Link href="/login">Login</Link>
             </Button>

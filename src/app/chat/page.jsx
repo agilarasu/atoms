@@ -3,10 +3,22 @@
 import { useChat } from 'ai/react';
 import MDXRenderer from '@/components/memoized-mdx';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
+import { useSession } from 'next-auth/react';
 
 export default function Page() {
     const { messages, input, handleInputChange, handleSubmit, isLoading, error, reload, stop } =
         useChat({});
+
+
+    const { data: session, status } = useSession();
+    if (status === 'loading') return null;
+    if (!session) {
+        return (
+            <div className="min-h-screen flex items-center justify-center">
+                <p className="text-gray-600">You need to sign in to view this page.</p>
+            </div>
+        );
+    }
 
     return (
         <>
@@ -15,15 +27,15 @@ export default function Page() {
                     <div className="space-y-8 mb-4">
                         {messages.map(message => (
                             <>
-                            <Card className="my-4">
-                                
-                                <CardHeader>
-                                    <CardTitle>{message.role === 'user' ? 'You' : 'Assistant'} </CardTitle>
-                                </CardHeader>
-                                <CardContent>
-                                    <MDXRenderer id={message.id} content={message.content} />
-                                </CardContent>
-                            </Card>
+                                <Card className="my-4">
+
+                                    <CardHeader>
+                                        <CardTitle>{message.role === 'user' ? 'You' : 'Assistant'} </CardTitle>
+                                    </CardHeader>
+                                    <CardContent>
+                                        <MDXRenderer id={message.id} content={message.content} />
+                                    </CardContent>
+                                </Card>
                             </>
 
                         ))}

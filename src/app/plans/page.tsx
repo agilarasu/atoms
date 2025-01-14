@@ -16,6 +16,7 @@ import {
 import { Clock, Sparkles, ChevronRight, Loader2 } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 import Image from 'next/image';
+import { useSession } from 'next-auth/react';
 
 interface Plan {
   _id: string;
@@ -51,6 +52,16 @@ const PlansPage = () => {
       console.error('Error fetching plans:', err);
     }
   };
+
+  const { data: session, status } = useSession();
+  if (status === 'loading') return null;
+  if (!session) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <p className="text-gray-600">You need to sign in to view this page.</p>
+      </div>
+    );
+  }
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
