@@ -6,7 +6,9 @@ import { Inter } from 'next/font/google'
 // If loading a variable font, you don't need to specify the font weight
 const inter = Inter({ subsets: ['latin'] })
  
- 
+// NextSessionProvider is a custom provider that wraps the NextAuth session provider
+import NextSessionProvider from '@/components/NextSessionProvider'
+
 export const metadata: Metadata = {
   title: 'Atom',
   description: 'Learn',
@@ -18,8 +20,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={inter.className}>
-      <body>{children}</body>
+    <html lang="en">
+      <body>
+        <NextSessionProvider>
+          {children}
+        </NextSessionProvider>
+      </body>
     </html>
   )
 }
