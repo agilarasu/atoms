@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Clock, Share2, Copy, ChevronRight } from 'lucide-react';
 import { useSession } from 'next-auth/react';
+import Link from 'next/link';
 
 interface Module {
     name: string;
@@ -99,6 +100,9 @@ const PlanDetailsPage = () => {
                             <Copy className="w-4 h-4 mr-2" />
                             Copy
                         </Button>
+                    </div>
+                    <div className="mt-4 p-4 bg-yellow-100 text-yellow-800 rounded">
+                        <p>These features are not implemented yet. In the meantime, you can interact with our <Link href="/chat" className="text-blue-500 underline">chatbot</Link> to get started.</p>
                     </div>
                 </div>
             </div>
