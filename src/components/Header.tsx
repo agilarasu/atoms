@@ -24,32 +24,37 @@ export function Header() {
         <Link href="/" className="text-2xl font-sans font-bold text-gray-900">
           Atoms.
         </Link>
-        <div>
-          {status === 'authenticated' && session?.user && (
-            <DropdownMenu>
+        <div> 
+            <div className="flex items-center space-x-4">
+            <Button asChild variant="outline">
+                <Link href="https://quiz-chat.vercel.app/" target="_blank" rel="noopener noreferrer">Try quizzes</Link>
+            </Button>
+            {status === 'authenticated' && session?.user && (
+              <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="relative h-8 w-8 rounded-full">
-                  <Avatar className="h-8 w-8">
-                    <AvatarImage src={session.user.image || ''} alt={session.user.name || ''} />
-                    <AvatarFallback>{session.user.name?.charAt(0) || 'U'}</AvatarFallback>
-                  </Avatar>
+                <Avatar className="h-8 w-8">
+                  <AvatarImage src={session.user.image || ''} alt={session.user.name || ''} />
+                  <AvatarFallback>{session.user.name?.charAt(0) || 'U'}</AvatarFallback>
+                </Avatar>
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
                 <DropdownMenuItem asChild>
-                  <Link href="/settings">Settings</Link>
+                <Link href="/settings">Settings</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem onSelect={handleLogout}>
-                  Logout
+                Logout
                 </DropdownMenuItem>
               </DropdownMenuContent>
-            </DropdownMenu>
-          )}
-          {status === 'unauthenticated' && (
-            <Button asChild>
+              </DropdownMenu>
+            )}
+            {status === 'unauthenticated' && (
+              <Button asChild>
               <Link href="/login">Login</Link>
-            </Button>
-          )}
+              </Button>
+            )}
+            </div>
         </div>
       </div>
     </header>

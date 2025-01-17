@@ -102,7 +102,7 @@ const PlanDetailsPage = () => {
                         </Button>
                     </div>
                     <div className="mt-4 p-4 bg-yellow-100 text-yellow-800 rounded">
-                        <p>These features are not implemented yet. In the meantime, you can interact with our <Link href="/chat" className="text-blue-500 underline">chatbot</Link> to get started.</p>
+                        <p>These features are not implemented yet. In the meantime, you can interact with our <Link href="/chat"  className="text-blue-500 underline">chatbot</Link> or <Link href="https://quiz-chat.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-blue-500 underline">quizzes</Link> to get started.</p>
                     </div>
                 </div>
             </div>
