@@ -9,7 +9,7 @@ import {z} from 'zod';
 export async function GET() {
   try {
     await dbConnect();
-    const plans = await Plan.find({}, 'courseName courseDescription createdAt');
+    const plans = await Plan.find({}, 'courseName courseDescription createdAt').sort({ createdAt: -1 });
     return NextResponse.json(plans, { status: 200 });
   } catch (error) {
     console.error('Error fetching plans:', error);

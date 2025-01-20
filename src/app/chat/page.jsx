@@ -1,7 +1,7 @@
 'use client';
 
 import { useChat } from 'ai/react';
-import MDXRenderer from '@/components/memoized-mdx';
+import {MemoizedMarkdown} from '@/components/memoized-markdown.tsx';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { useSession } from 'next-auth/react';
 
@@ -33,7 +33,7 @@ export default function Page() {
                                         <CardTitle>{message.role === 'user' ? 'You' : 'Assistant'} </CardTitle>
                                     </CardHeader>
                                     <CardContent>
-                                        <MDXRenderer id={message.id} content={message.content} />
+                                        <MemoizedMarkdown id={message.id} content={message.content} />
                                     </CardContent>
                                 </Card>
                             </>
