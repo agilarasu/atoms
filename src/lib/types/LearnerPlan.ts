@@ -1,10 +1,11 @@
+import LearnerProfile from "./LearnerProfile";
+
 interface LearnerPlan {
-    planId: string; // Object ID
     learnerId: string; // Object ID
     planName: string;
     overallGoal: string;
     learningPhylosophy: string;
-    learnerProfile: string; // Object ID
+    learnerProfile: LearnerProfile;
     modules: {
         moduleId: string;
         moduleName: string;

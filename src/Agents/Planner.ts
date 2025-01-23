@@ -13,12 +13,11 @@ export async function generatePlan(learnerProfile: LearnerProfile): Promise<Lear
     return new Promise<LearnerPlan>((resolve) => {
         setTimeout(() => {
             resolve({
-                planId: "planId",
                 learnerId: "learnerId",
                 planName: "planName",
                 overallGoal: "overallGoal",
                 learningPhylosophy: "learningPhylosophy",
-                learnerProfile: "learnerProfile",
+                learnerProfile: learnerProfile,
                 modules: [
                 {
                     moduleId: "moduleId",

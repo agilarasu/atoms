@@ -1,23 +1,11 @@
-"use server";
-
 import Link from "next/link";
+import dbConnect  from "@/lib/mongodb";
+import {LearnerPlan} from "@/lib/models/LearnerPlan";
 
 // return user's plans
-// import and use client component for profiler
-
-// placeholder for user's plans
-const plans = [
-  {
-    id: 1,
-    title: "Plan 1",
-  },
-  {
-    id: 2,
-    title: "Plan 2",
-  },
-];
-
 export default async function Page() {
+  await dbConnect();
+  const plans = await LearnerPlan.find({}).exec();
 
   return (
     <div>
@@ -26,9 +14,9 @@ export default async function Page() {
       <Link href="/learn/new"> Create a new plan</Link>
       <ul>
         {plans.map((plan) => (
-            <li key={plan.id}>
-                <a href={`/learn/${plan.id}`}>{plan.title}</a>
-            </li>
+          <li key={plan._id}>
+            <Link href={`/learn/${plan._id}`}>{plan.planName}</Link>
+          </li>
         ))}
       </ul>
     </div>
