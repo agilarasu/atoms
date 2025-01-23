@@ -1,4 +1,7 @@
 "use server";
+
+import Link from "next/link";
+
 // return user's plans
 // import and use client component for profiler
 
@@ -20,6 +23,7 @@ export default async function Page() {
     <div>
       <h1>My Plans</h1>
       <p>(Rendered on server)</p>
+      <Link href="/learn/new"> Create a new plan</Link>
       <ul>
         {plans.map((plan) => (
             <li key={plan.id}>

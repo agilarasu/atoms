@@ -1,8 +1,6 @@
 # Atoms
 
-The Atoms is an interactive chatbot that helps users learn a new topic with interactive components. 
-
-The chatbot is designed to be interactive and engaging, and it can be customized to fit the needs of the user.
+The Atoms is a learning platform that helps users learn a new topic with the help of LLMs. 
 
 ## Screenshot
 
@@ -12,7 +10,6 @@ The chatbot is designed to be interactive and engaging, and it can be customized
 
 - Next.js
 - Vercel AI SDK
-- MDX
 - Tailwind CSS
 
 ## Installation
