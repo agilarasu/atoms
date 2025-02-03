@@ -1,29 +1,39 @@
-// sidebar with chat links
+// sidebar with module links
 "use server";
 import Link from "next/link";
+import { getLayout } from "./actions";
 
 export default async function Layout({ params, children }: { params: Promise<{ plan_id: string }>, children: any }) {
     const { plan_id } = await params;
-    const planId = parseInt(plan_id, 10);
+    const layout = await getLayout(plan_id);
+
     return (
         <div>
-            <div style={{ display: 'flex' }}>
-                <div style={{ width: '200px', borderRight: '1px solid #ccc' }}>
-                    <Link href='/learn/'>Back to Plans</Link>
-                    <br/>
-                    Sidebar with Chat Links (rendered on server)
-                    <ul>
-                        <li>
-                            <Link href={`/learn/${planId}/1`}>Module 1</Link>
+            <div className="flex">
+                <aside className="w-64 border-r border-gray-200 py-4">
+                    <div className="px-4">
+                        <Link href='/learn/' className="text-blue-500 hover:underline block mb-2">Back to Plans</Link>
+                        <h2 className="text-lg font-semibold mb-2">Modules</h2>
+                    </div>
+                    <ul className="mt-2">
+                        <li key="overview">
+                            <Link href={`/learn/${plan_id}`} className="block px-4 py-2 hover:bg-gray-100">
+                                Overview
+                            </Link>
                         </li>
-                        <li>
-                            <Link href={`/learn/${planId}/2`}>Module 2</Link>
-                        </li>
+                        {layout.modules.map((module) => (
+                            <li key={module.moduleId}>
+                                <Link href={`/learn/${plan_id}/${module.moduleId}`} className="block px-4 py-2 hover:bg-gray-100">
+                                    {module.moduleName}
+                                </Link>
+                            </li>
+                        ))}
                     </ul>
-                </div>
-                <div style={{ flex: 1, padding: '10px' }}>
+                </aside>
+                <main className="flex-1 p-4">
+                    <h1 className="text-2xl font-bold mb-4">{layout.planName}</h1>
                     {children}
-                </div>
+                </main>
             </div>
         </div>
     );
