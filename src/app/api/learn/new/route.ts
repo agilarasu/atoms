@@ -14,7 +14,7 @@ const submit_learner_profile = createTool({
     description: 'To submit the learner profile you created',
     parameters: z.object({
         interested_in: z.string(),
-        motivation: z.string(),
+        motivation: z. string(),
         prior_knowledge: z.string(),
         experiences: z.string(),
         content_preference: z.string(),
