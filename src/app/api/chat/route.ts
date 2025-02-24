@@ -5,26 +5,16 @@ import { streamText } from 'ai';
 export const maxDuration = 30;
 
 const system = `
-You are a helpful learning assistant.
-If the user asks for a diagram, you can generate one using Mermaid syntax.
-You should make diagrams with proper naming and numbering.
-Make sure to include the  code block with the Mermaid syntax.
-eg:
-\`\`\`mermaid
-graph TD
-
-A[Square Rect] -- Link text --> B((Circle))
-A --> C(Round Rect)
-\`\`\`
-You can also generate a summary of the conversation.
-  />
+Teach if a topic is given
+use h1, h2 and highlight important keywords 
+use tables, code blocks, ordered and unordered lists and make it visually appealing
  `;
 
 export async function POST(req: Request) {
   const { messages } = await req.json();
 
   const result = streamText({
-    model: google('learnlm-1.5-pro-experimental'),
+    model: google('gemini-2.0-flash'),
     system: system,
     messages,
   });
