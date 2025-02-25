@@ -23,7 +23,7 @@ export async function middleware(req: NextRequest) {
   }
 
   // Frontend-specific logic
-  if (pathname.startsWith('/chat') || pathname.startsWith('/plans')) {
+  if (pathname.startsWith('/chat') || pathname.startsWith('/learn')) {
     if (!token) {
       const loginUrl = new URL('/login', url.origin);
       loginUrl.searchParams.set('redirect', pathname);

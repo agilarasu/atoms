@@ -13,7 +13,7 @@ export default function LoginPage() {
 
     useEffect(() => {
         if (status === 'authenticated') {
-            router.push('/plans');
+            router.push('/learn');
         }
     }, [status, router]);
 
@@ -47,7 +47,7 @@ export default function LoginPage() {
                     </div>
                     <Button 
                         className="w-full" 
-                        onClick={() => signIn('github', { callbackUrl: '/plans' })}
+                        onClick={() => signIn('github', { callbackUrl: '/learn' })}
                     >
                         <Github className="mr-2 h-4 w-4" />
                         Continue with GitHub

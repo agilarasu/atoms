@@ -1,0 +1,220 @@
+/* Base Styles - Mimicking Notion's clean look */
+.markdownContainer {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif; /* Notion-like font stack */
+  line-height: 1.6;
+  color: #333; /* Darker gray text for readability */
+  font-size: 16px; /* Base font size, adjust as needed */
+  padding: 0; /* Reset default padding */
+  margin: 0; /* Reset default margin */
+  word-wrap: break-word; /* Prevent long words from breaking layout */
+}
+
+/* Headings */
+.markdownContainer h1,
+.markdownContainer h2,
+.markdownContainer h3,
+.markdownContainer h4,
+.markdownContainer h5,
+.markdownContainer h6 {
+  font-weight: 600; /* Semi-bold headings */
+  line-height: 1.3;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  color: #1e1e1e; /* Slightly darker heading color */
+}
+
+.markdownContainer h1 {
+  font-size: 2.25em; /* ~36px */
+}
+
+.markdownContainer h2 {
+  font-size: 1.75em; /* ~28px */
+}
+
+.markdownContainer h3 {
+  font-size: 1.375em; /* ~22px */
+}
+
+.markdownContainer h4 {
+  font-size: 1.125em; /* ~18px */
+}
+
+.markdownContainer h5 {
+  font-size: 1em;    /* ~16px - same as base */
+}
+
+.markdownContainer h6 {
+  font-size: 0.875em; /* ~14px */
+  color: #555; /* Lighter for smaller headings */
+}
+
+/* Paragraphs */
+.markdownContainer p {
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+/* Links */
+.markdownContainer a {
+  color: #007bff; /* Notion-like link color */
+  text-decoration: none;
+  border-bottom: 1px solid transparent; /* Subtle underline on hover */
+  transition: border-bottom 0.2s ease-in-out;
+}
+
+.markdownContainer a:hover {
+  border-bottom-color: #007bff;
+}
+
+/* Bold and Strong */
+.markdownContainer strong,
+.markdownContainer b {
+  font-weight: 600; /* Semi-bold for emphasis */
+}
+
+/* Italic and Emphasis */
+.markdownContainer em,
+.markdownContainer i {
+  font-style: italic;
+}
+
+/* Strikethrough */
+.markdownContainer del,
+.markdownContainer s {
+  text-decoration: line-through;
+  opacity: 0.7; /* Slightly faded strikethrough */
+}
+
+/* Blockquotes */
+.markdownContainer blockquote {
+  border-left: 3px solid #ddd; /* Light gray left border */
+  padding-left: 1em;
+  margin: 1em 0;
+  font-style: italic;
+  color: #777; /* Grayish blockquote text */
+}
+
+/* Lists (Unordered and Ordered) */
+.markdownContainer ul,
+.markdownContainer ol {
+  padding-left: 1.5em; /* Indentation for lists */
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+}
+
+.markdownContainer ul li,
+.markdownContainer ol li {
+  margin-bottom: 0.5em; /* Spacing between list items */
+}
+
+.markdownContainer ul {
+  list-style-type: disc; /* Default bullet style */
+}
+
+.markdownContainer ol {
+  list-style-type: decimal; /* Default numbered style */
+}
+
+/* Code Blocks */
+.markdownContainer pre {
+  background-color: #f6f8fa; /* Light gray background for code blocks */
+  padding: 1em;
+  border-radius: 4px;
+  overflow-x: auto; /* Horizontal scroll for long code lines */
+  margin-top: 1em;
+  margin-bottom: 1em;
+  font-family: monospace, monospace; /* Monospace font for code */
+  font-size: 0.9em;
+  line-height: 1.4;
+  border: 1px solid #eee; /* Subtle border */
+}
+
+.markdownContainer code {
+  font-family: monospace, monospace; /* Monospace for inline code too */
+  padding: 0.2em 0.4em;
+  background-color: #f0f0f0; /* Lighter gray for inline code background */
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+/* Inline Code within Pre (for syntax highlighting if needed later) */
+.markdownContainer pre code {
+  background-color: transparent; /* Remove background within pre */
+  padding: 0;
+  border-radius: 0;
+}
+
+
+/* Horizontal Rule */
+.markdownContainer hr {
+  border: 0;
+  border-top: 1px solid #eee; /* Light gray horizontal line */
+  margin: 2em 0;
+}
+
+/* Task Lists (Checkboxes) - Requires JavaScript for interactivity */
+.markdownContainer ul li > input[type="checkbox"] {
+  margin-right: 0.5em;
+  vertical-align: middle; /* Align checkbox with text */
+  appearance: none; /* Remove default checkbox styling */
+  -webkit-appearance: none; /* For Safari and Chrome */
+  -moz-appearance: none; /* For Firefox */
+  width: 16px;
+  height: 16px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+  position: relative; /* For custom checkmark */
+}
+
+.markdownContainer ul li > input[type="checkbox"]:checked {
+  background-color: #007bff; /* Blue when checked */
+  border-color: #007bff;
+}
+
+.markdownContainer ul li > input[type="checkbox"]:checked::before {
+  content: '\2713'; /* Checkmark character (✓) */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 12px;
+}
+
+/* Images (Basic styling, Notion handles images in blocks differently) */
+.markdownContainer img {
+  max-width: 100%; /* Make images responsive */
+  height: auto;
+  display: block; /* Remove bottom spacing */
+  margin: 1em auto; /* Center images */
+  border-radius: 4px; /* Slightly rounded corners for images */
+}
+
+/* --- Optional Enhancements (Consider adding if needed) --- */
+
+/* Code Block Syntax Highlighting - Needs a library like Prism.js or Highlight.js */
+/* Example placeholder for syntax highlighting classes */
+/*
+.markdownContainer pre code.language-javascript { ... }
+.markdownContainer pre code.language-python { ... }
+... and so on for different languages ...
+*/
+
+.markdownContainer table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+.markdownContainer th,
+.markdownContainer td {
+  border: 1px solid #ddd;
+  padding: 0.5em;
+  text-align: left;
+}
+
+.markdownContainer th {
+  font-weight: bold;
+  background-color: #f0f0f0;
+}
