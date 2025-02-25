@@ -5,6 +5,7 @@ import { streamText } from 'ai';
 export const maxDuration = 30;
 
 const system = `
+Your name is Atom.
 Teach if a topic is given
 use h1, h2 and highlight important keywords 
 use code blocks, ordered and unordered lists and make it visually appealing

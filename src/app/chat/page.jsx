@@ -64,7 +64,7 @@ export default function Page() {
     return (
         <>
             <div>
-                <div className="flex flex-col w-full md:w-[60%] py-12 sm:py-24 mx-auto stretch overflow-y-auto pb-20 sm:pb-24"> {/* Added padding-bottom */}
+                <div className="flex flex-col w-full md:w-[60%] py-24 mx-auto stretch overflow-y-auto">
                     <div className="space-y-4">
                         {messages.length === 0 ? (
                             <WelcomeComponent onExampleClick={handleExampleClick} />
@@ -97,9 +97,9 @@ export default function Page() {
                         )}
                     </div>
                 </div>
-                <form onSubmit={handleSubmit} className="flex space-x-2 w-full justify-center p-4 bg-white sticky bottom-0"> {/* Changed to sticky and removed fixed */}
-                    <div className="relative flex items-center w-full sm:w-1/2 rounded-full bg-gray-200 border border-gray-200">
-                        <div className="pl-4 flex items-center justify-center h-full"> {/* Adjusted Plus icon container */}
+                <form onSubmit={handleSubmit} className="flex space-x-2 w-full justify-center fixed bottom-0 p-4 bg-white">
+                    <div className="relative flex items-center w-full md:w-1/2 rounded-full bg-gray-200 border border-gray-200">
+                        <div className="pl-4">
                             <Plus className="h-5 w-5 text-gray-00" />
                         </div>
                         <Input
@@ -108,9 +108,9 @@ export default function Page() {
                             onChange={handleInputChange}
                             disabled={isLoading}
                             placeholder="Ask Atoms."
-                            className="bg-transparent h-[7vh] sm:h-[10vh] border-none shadow-none focus-visible:ring-0 focus-visible:ring-transparent focus:outline-none"
+                            className="bg-transparent h-[10vh] border-none shadow-none focus-visible:ring-0 focus-visible:ring-transparent focus:outline-none"
                         />
-                        <div className="absolute right-2 flex items-center justify-center h-full"> {/* Adjusted Send/Stop/Retry button container */}
+                        <div className="absolute right-2">
                             {!isLoading && (
                                 <Button type="submit" variant="ghost" className="rounded-full p-2 hover:bg-gray-200">
                                     <Send className="h-5 w-5" />
