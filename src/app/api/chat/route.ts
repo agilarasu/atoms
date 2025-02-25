@@ -7,7 +7,8 @@ export const maxDuration = 30;
 const system = `
 Teach if a topic is given
 use h1, h2 and highlight important keywords 
-use tables, code blocks, ordered and unordered lists and make it visually appealing
+use code blocks, ordered and unordered lists and make it visually appealing
+Avoid using tables
  `;
 
 export async function POST(req: Request) {
