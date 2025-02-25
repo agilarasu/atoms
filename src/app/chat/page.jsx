@@ -60,43 +60,37 @@ export default function Page() {
     return (
         <>
             <div>
-                <div className="flex flex-col w-[60%] py-24 mx-auto stretch overflow-y-auto">
+                <div className="flex flex-col w-full md:w-[60%] py-24 mx-auto stretch overflow-y-auto">
                     <div className="space-y-4">
                         {messages.map(message => (
                             <div key={message.id} className={`mb-2 flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                                 {message.role === 'assistant' && (
                                     <div className="mr-2">
-                                        <FaStar/>
+                                        <FaStar />
                                     </div>
                                 )}
                                 <div className={`rounded-xl px-4 py-2 ${message.role === 'user' ? 'bg-gray-200 text-black' : 'bg-white text-black shadow'}`}>
-                                    
-                                    {message.role !== 'user' && ( // Only show download button for assistant messages
-                                    <div className={notion.markdownContainer}>
-                                    <MemoizedMarkdown id={message.id} content={message.content} />
-                                        <Button
-                                            variant="outline"
-                                            size="sm"
-                                            className="mt-2"
-                                            onClick={() => handleDownloadPdf(message.content, message.id)}
-                                        >
-                                            Download PDF
-                                        </Button>
+                                    {message.role !== 'user' && (
+                                        <div className={notion.markdownContainer}>
+                                            <MemoizedMarkdown id={message.id} content={message.content} />
+                                            <Button
+                                                variant="outline"
+                                                size="sm"
+                                                className="mt-2"
+                                                onClick={() => handleDownloadPdf(message.content, message.id)}
+                                            >
+                                                Download PDF
+                                            </Button>
                                         </div>
                                     )}
-                                    {
-                                        message.role === "user" && (
-                                            message.content
-                                        )
-                                    }
+                                    {message.role === 'user' && message.content}
                                 </div>
                             </div>
                         ))}
                     </div>
-
                 </div>
                 <form onSubmit={handleSubmit} className="flex space-x-2 w-full justify-center fixed bottom-0 p-4 bg-white">
-                    <div className="relative flex items-center w-1/2 rounded-full bg-gray-200 border border-gray-200">
+                    <div className="relative flex items-center w-full md:w-1/2 rounded-full bg-gray-200 border border-gray-200">
                         <div className="pl-4">
                             <Plus className="h-5 w-5 text-gray-00" />
                         </div>
@@ -106,7 +100,7 @@ export default function Page() {
                             onChange={handleInputChange}
                             disabled={isLoading}
                             placeholder="Ask Atoms."
-                            className='bg-transparent h-[10vh] border-none shadow-none focus-visible:ring-0 focus-visible:ring-transparent focus:outline-none'
+                            className="bg-transparent h-[10vh] border-none shadow-none focus-visible:ring-0 focus-visible:ring-transparent focus:outline-none"
                         />
                         <div className="absolute right-2">
                             {!isLoading && (
@@ -114,13 +108,11 @@ export default function Page() {
                                     <Send className="h-5 w-5" />
                                 </Button>
                             )}
-
                             {isLoading && (
                                 <Button type="button" variant="destructive" onClick={() => stop()}>
                                     Stop
                                 </Button>
                             )}
-
                             {error && (
                                 <>
                                     <div>An error occurred.</div>
